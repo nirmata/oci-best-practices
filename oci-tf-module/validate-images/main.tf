@@ -1,8 +1,8 @@
 resource "oci_core_instance" "ic_pub_vm-A" {
-  compartment_id      = oci_identity_compartment.example_compartment.id
-  shape               = var.ic_pub_vm_A.shape.name
-  availability_domain = "xyz" // Add a Policy to validate
-  display_name        = var.ic_pub_vm_A.display_name
+  compartment_id      = 12439
+  shape               = dev-nirmata
+  availability_domain = kIdk:PHX-AD-1
+  display_name        = oci-scan
 
   source_details {
 
