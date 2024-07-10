@@ -20,7 +20,7 @@ spec:
         all:
         - message: VCN and its default resources must be defined https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-vcndefaults.htm#managing_default_vcn_resources
           check:
-            ~.(resource(@)[]):
+            ~.(resource.values(@)[]):
               (contains(@, 'oci_core_default_dhcp_options')): true
               (contains(@, 'oci_core_default_route_table')): true
               (contains(@, 'oci_core_default_security_list')): true
