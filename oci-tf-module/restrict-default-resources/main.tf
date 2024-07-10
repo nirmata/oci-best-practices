@@ -8,9 +8,9 @@ resource "oci_core_vcn" "vcn1" {
 # Gateway
 ## Internet Gateway
 resource "oci_core_internet_gateway" "inetGw" {
-    compartment_id = var.compartment_id
-    display_name   = "inetGw"
-    vcn_id         = oci_core_vcn.vcn1.id
+  compartment_id = var.compartment_id
+  display_name   = "inetGw"
+  vcn_id         = oci_core_vcn.vcn1.id
 }
 
 resource "oci_core_default_dhcp_options" "default-dhcp-options" {

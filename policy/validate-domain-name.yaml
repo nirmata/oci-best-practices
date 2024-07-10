@@ -19,6 +19,6 @@ spec:
         all:
         - message: Ensure right Domain name are used as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
           check:
-            ~.(resource[].values(@)[]):
+            ~.resource:
                 (availability_domain || `[]`):
                   (contains(@, 'kIdk:PHX-AD-1')): true
