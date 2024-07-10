@@ -1,0 +1,26 @@
+apiVersion: json.kyverno.io/v1alpha1
+kind: ValidatingPolicy
+metadata:
+  name: check-cost-center-tagging
+  annotations:
+    policies.kyverno.io/title: Ensure Cost Center tags are enabled
+    policies.kyverno.io/category: OCI Best Practices
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/description: >-
+      When creating infrastructure in order to ensure Terraform State is able to keep track of all default resources created in support of a VCN. The end user must define the default resources so they can be tracked https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-vcndefaults.htm#managing_default_vcn_resources
+
+spec:
+  rules:
+    - name: check-cost-center-tag
+      match:
+        all:
+        - ($analyzer.resource.type): terraform-config
+        - (resource.oci_core_vcn != null): true
+      assert:
+        all:
+        - message: VCN and its default resources must be defined https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-vcndefaults.htm#managing_default_vcn_resources
+          check:
+            ~.(resource(@)[]):
+              (contains(@, 'oci_core_default_dhcp_options')): true
+              (contains(@, 'oci_core_default_route_table')): true
+              (contains(@, 'oci_core_default_security_list')): true

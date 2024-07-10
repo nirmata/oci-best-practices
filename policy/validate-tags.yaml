@@ -22,4 +22,8 @@ spec:
             ~.(resource.oci_identity_compartment.values(@)[]):
                 (defined_tags || `[]`):
                   (contains(@, 'CostCenter')): true
+        - message: OCI resources must be tagged as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm#tagging_resources
+          check:
+            ~.(resource.oci_identity_compartment.values(@)[]):
+                (freeform_tags || `[]`):
                   (contains(@, 'Department')): true
