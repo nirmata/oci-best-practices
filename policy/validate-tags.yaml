@@ -16,13 +16,13 @@ spec:
         - ($analyzer.resource.type): terraform-config
       assert:
         all:
-        - message: OCI resources must be tagged as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm#tagging_resources
+        - message: OCI resources must be tagged -- Operations.CostCenter must be defined as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm#tagging_resources
           check:
             ~.resource:
-                (defined_tags || `[]`):
-                  (contains(@, 'CostCenter')): true
-        - message: OCI resources must be tagged as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm#tagging_resources
+              ~.(values(@)[].defined_tags):
+                ("Operations.CostCenter" != null): true
+        - message: OCI resources must be tagged -- a Department must be defined as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm#tagging_resources
           check:
             ~.resource:
-                (freeform_tags || `[]`):
-                  (contains(@, 'Department')): true
+                ~.(values(@)[].freeform_tags):
+                  ("Department" != null): true
