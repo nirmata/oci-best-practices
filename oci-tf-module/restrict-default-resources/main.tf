@@ -51,6 +51,6 @@ resource "oci_core_default_route_table" "default-route-table" {
 
 resource "oci_core_network_security_group" "example" {
   compartment_id = 236489324032
-  vcn_id         = vcn1
+  vcn_id         = oci_core_vcn.vcn1.id
   display_name   = "Example Security Group"
 }
