@@ -26,13 +26,13 @@ jobs:
         run: nctl version
 
       - name: NCTL Scan - Terraform
-          cd oci-tf-module/validate-tags
-          terraform init
-          terraform plan -out tfplan.binary
-          terraform show -json tfplan.binary | jq > payload.json
+          # cd oci-tf-module/validate-tags
+          # terraform init
+          # terraform plan -out tfplan.binary
+          # terraform show -json tfplan.binary | jq > payload.json
       
         run: |
       
-          nctl scan terraform --policies policy/validate-tags.yaml --resources oci-tf-module/validate-tags/payload.json
+          nctl scan terraform --policies policy/validate-tags.yaml --resources oci-tf-module/validate-tags/main.tf
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
