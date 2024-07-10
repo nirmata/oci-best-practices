@@ -10,15 +10,21 @@ metadata:
       Ensure right Domain name are used as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
 spec:
   rules:
-    - name: validate-domain-name
+    - name: validate-domain-name-used-for-image-registry
       match:
         all:
         - ($analyzer.resource.type): terraform-config
-        - (resource.oci_core_instance != null): true
+      context:
+      # creates a `expectedTeam` binding automatically
+      - name: domain
+        variable: oci.domain.name.tiaa.com
       assert:
         all:
-        - message: Ensure right Domain name are used as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
+        - message: Ensure availability_domain is defined https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
           check:
-            ~.resource:
-                (availability_domain || `[]`):
-                  (contains(@, 'kIdk:PHX-AD-1')): true
+            ~.(resource.oci_core_instance.values(@)[]):
+              availability_domain: ($domain)
+        - message: Ensure images for instances are pulled from {{$domain}} https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
+          check:
+            ~.(resource.oci_core_instance.values(@)[].source_details.image_id):
+                (contains(@, $domain)): true
