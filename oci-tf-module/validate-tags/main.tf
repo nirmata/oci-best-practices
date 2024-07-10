@@ -1,7 +1,7 @@
 resource "oci_identity_compartment" "test_compartment" {
     #Required
     compartment_id = 13137101
-    description = this is a new compartment
+    description = "this is a new compartment"
     name = oci-scan
 
     #Optional
