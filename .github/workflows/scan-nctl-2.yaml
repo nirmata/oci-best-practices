@@ -1,4 +1,4 @@
-name: NCTL Scan Terraform Demo
+name: NCTL Scan Terraform Demo (json)
 run-name: ${{ github.actor }} has triggered Scan Action 🚀
 on:
   pull_request:
@@ -27,9 +27,9 @@ jobs:
 
       - name: NCTL Scan - Terraform
              cd oci-tf-module/validate-tags
-            terraform init
-            terraform plan -out tfplan.binary
-            terraform show -json tfplan.binary | jq > payload.json
+             terraform init
+             terraform plan -out tfplan.binary
+             terraform show -json tfplan.binary | jq > payload.json
       
         run: |
         
