@@ -3,7 +3,7 @@ resource "oci_database_database" "test_database"
    #Required
    database
    {
-       admin_password = 1234 // Policy to always use variables
+       admin_password = "1234" // Policy to always use variables
        db_name = admin  // Policy to always use variables
 
        db_unique_name = oci-scan
@@ -22,7 +22,7 @@ resource "oci_database_database" "test_database2"
    #Required
    database
    {
-       admin_password = 1234 // Policy to always use variables
+       admin_password = "1234" // Policy to always use variables
        db_name = admin  // Policy to always use variables
 
        db_unique_name = oci-scan

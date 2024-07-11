@@ -1,27 +1,24 @@
 apiVersion: json.kyverno.io/v1alpha1
 kind: ValidatingPolicy
 metadata:
-  name: validate-domain-name
+  name: protect-from-sensitive-data
   annotations:
     policies.kyverno.io/title: Ensure right Domain name are used
     policies.kyverno.io/category: OCI Best Practices
     policies.kyverno.io/severity: medium
     policies.kyverno.io/description: >-
-      Ensure right Domain name are used as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
+      Ensure we do not hardcode sensitive data as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Sensitive_Data.htm
 spec:
   rules:
-    - name: validate-domain-name-used-for-image-registry
+    - name: validate-no-sensitive-data-hardcode
       match:
         all:
         - ($analyzer.resource.type): terraform-config
-      context:
-      # creates a `expectedTeam` binding automatically
-      - name: domain
-        variable: oci.domain.name.tiaa.com
       assert:
         all:
-        - message: Ensure availability_domain is defined https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
+        - message: Ensure we do not hardcode sensitive data as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Sensitive_Data.htm
           check:
-            ~.(resource.oci_core_instance.values(@)[]):
-              availability_domain: ($domain)
+            ~.(resource):
+              ~.(values(@)[].database):
+                (contains(@,'var.')): true
 
