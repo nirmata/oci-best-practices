@@ -1,7 +1,7 @@
 apiVersion: json.kyverno.io/v1alpha1
 kind: ValidatingPolicy
 metadata:
-  name: validate-domain-name
+  name: validate-image-domain-name
   annotations:
     policies.kyverno.io/title: Ensure right Domain name are used
     policies.kyverno.io/category: OCI Best Practices
