@@ -21,10 +21,9 @@ jobs:
       - name: NCTL-scan-installer - Terraform
         uses: supplypike/setup-bin@v4
         with:
-          uri: 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip'
-              name: 'nctl'
-              version: '4.0.2'
-        run: echo "🖥️ The workflow is now ready to test your code on the runner."
+          uri: 'https://nirmata-downloads.s3.us-east-2.amazonaws.com/nctl/nctl_4.0.2/nctl_4.0.2\_macos_64-bit.zip'
+          name: 'nctl'
+          version: '4.0.2'
 
       - name: Check nctl version
         run: nctl version
