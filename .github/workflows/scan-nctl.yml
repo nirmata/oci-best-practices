@@ -26,11 +26,14 @@ jobs:
           version: '4.0.2'
 
       - name: Check nctl version
-        run: nctl version
+        run: |
+          nctl version
+          nctl login --url https://nirmata.io --userid dolis@nirmata.com --token 87s9aymmWxG1c8q9min2caU6M4X9kmDtXQNc+LFQHLLCVhsW6QzHawQ2pQKZr5e3xc4zgTm+9cU3tl1v+d5WbA==
 
       - name: NCTL Scan - Terraform
         run: |     
           nctl scan terraform --policies policy/validate-tags.yaml --resources oci-tf-module/validate-tags/main.tf 
           nctl scan terraform --policies policy/validate-image.yaml --resources oci-tf-module/validate-images/main.tf
+          nctl scan repository -p policy
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
