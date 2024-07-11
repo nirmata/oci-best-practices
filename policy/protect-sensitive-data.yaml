@@ -3,9 +3,9 @@ kind: ValidatingPolicy
 metadata:
   name: protect-from-sensitive-data
   annotations:
-    policies.kyverno.io/title: Ensure right Domain name are used
+    policies.kyverno.io/title: Ensure variables are used for secrets to protect sensitive data
     policies.kyverno.io/category: OCI Best Practices
-    policies.kyverno.io/severity: medium
+    policies.kyverno.io/severity: high
     policies.kyverno.io/description: >-
       Ensure we do not hardcode sensitive data as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Sensitive_Data.htm
 spec:
