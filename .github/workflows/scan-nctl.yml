@@ -21,7 +21,7 @@ jobs:
       - name: NCTL-scan-installer - Terraform
         uses: supplypike/setup-bin@v4
         with:
-          uri: 'https://nirmata-downloads.s3.us-east-2.amazonaws.com/nctl/nctl_4.0.2_VERSION/nctl_4.0.2\_linux_arm64.zip'
+          uri: 'https://nirmata-downloads.s3.us-east-2.amazonaws.com/nctl/nctl_4.0.2/nctl_4.0.2_linux_386.zip'
           name: 'nctl'
           version: '4.0.2'
 
