@@ -33,8 +33,8 @@ jobs:
       
         run: |
         
-          chmod +x /scripts/install-tf.sh
-          ./scripts/install-tf.sh
+          # chmod +x /scripts/install-tf.sh
+          # ./scripts/install-tf.sh
           nctl scan terraform --policies policy/validate-tags.yaml --resources oci-tf-module/validate-tags/payload.json
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
