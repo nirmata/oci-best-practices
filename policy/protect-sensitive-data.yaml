@@ -18,8 +18,8 @@ spec:
         all:
         - message: Ensure we do not hardcode sensitive data as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Sensitive_Data.htm
           check:
-            ~.resource:
-              ~.(values(@)[].database):
+            resource:
+              ~.(oci_database_database.values(@)[].database[]):
                 admin_password:
                   (contains(@,'var.')): true
                 db_name:
