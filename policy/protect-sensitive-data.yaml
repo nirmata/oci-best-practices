@@ -18,7 +18,7 @@ spec:
         all:
         - message: Ensure we do not hardcode sensitive data as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Sensitive_Data.htm
           check:
-            ~.(resource):
+            ~.resource:
               ~.(values(@)[].database):
                 (contains(@,'var.')): true
 
