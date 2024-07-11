@@ -33,6 +33,6 @@ jobs:
       
         run: |
       
-          nctl scan terraform --policies policy/validate-tags.yaml --resources oci-tf-module/validate-tags/main.tf
+          nctl scan terraform --policies policy/validate-tags.yaml --resources oci-tf-module/validate-tags/payload.json
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
