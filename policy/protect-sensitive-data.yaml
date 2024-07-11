@@ -20,5 +20,7 @@ spec:
           check:
             ~.resource:
               ~.(values(@)[].database):
-                (contains(@,'var.')): true
-
+                admin_password:
+                  (contains(@,'var.')): true
+                db_name:
+                  (contains(@,'var.')): true
