@@ -15,7 +15,6 @@ spec:
         all:
         - ($analyzer.resource.type): terraform-config
       context:
-      # creates a `expectedTeam` binding automatically
       - name: domain
         variable: oci.domain.name.tiaa.com
       assert:
