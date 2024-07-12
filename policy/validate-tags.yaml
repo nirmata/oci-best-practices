@@ -7,7 +7,9 @@ metadata:
     policies.kyverno.io/category: OCI Best Practices
     policies.kyverno.io/severity: medium
     policies.kyverno.io/description: >-
-      Ensure Resources are tagged to track resources used for specific purposes, or to aggregate them, report on them, or take bulk actions on them. Reference: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm
+      Ensure resources are tagged appropriately for specific purposes, which include cost management, aggregation, reporting, and bulk action.
+      Reference: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm
+      
 spec:
   rules:
     - name: check-cost-center-tag
