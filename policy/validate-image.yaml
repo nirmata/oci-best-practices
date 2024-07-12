@@ -7,7 +7,8 @@ metadata:
     policies.kyverno.io/category: OCI Best Practices
     policies.kyverno.io/severity: critical
     policies.kyverno.io/description: >-
-      Ensure images for instance are pulled from the right domain. https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
+      Ensure OCI images for instance are pulled from the right domain. 
+      https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
 spec:
   rules:
     - name: validate-image-domain
