@@ -13,7 +13,7 @@ spec:
     - name: validate-domain-name-used-for-image-registry
       match:
         all:
-        - ($analyzer.resource.type): terraform-config
+        - (resource.oci_core_instance != null): true
       context:
       # creates a `expectedTeam` binding automatically
       - name: domain
