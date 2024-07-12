@@ -1,16 +1,16 @@
 apiVersion: json.kyverno.io/v1alpha1
 kind: ValidatingPolicy
 metadata:
-  name: validate-domain-name
+  name: validate-image-domain
   annotations:
     policies.kyverno.io/title: Ensure right Domain name are used
     policies.kyverno.io/category: OCI Best Practices
     policies.kyverno.io/severity: critical
     policies.kyverno.io/description: >-
-      Ensure right Domain name are used as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
+      Ensure images for instance are pulled from the right domain. https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Availability_Domains.htm
 spec:
   rules:
-    - name: validate-domain-name-used-for-image
+    - name: validate-image-domain
       match:
         all:
         - ($analyzer.resource.type): terraform-config
