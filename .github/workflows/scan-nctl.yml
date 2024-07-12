@@ -32,8 +32,6 @@ jobs:
 
       - name: NCTL Scan - Terraform
         run: |     
-          nctl scan terraform --policies policy/validate-tags.yaml --resources oci-tf-module/validate-tags/main.tf 
-          nctl scan terraform --policies policy/validate-image.yaml --resources oci-tf-module/validate-images/main.tf
           nctl scan repository -p policy
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
