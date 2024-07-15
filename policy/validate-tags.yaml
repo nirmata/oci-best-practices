@@ -20,7 +20,7 @@ spec:
         - (resource.oci_identity_compartment != null): true
       assert:
         all:
-        - message: OCI resources must be tagged -- Operations.CostCenter must be defined as per https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm#tagging_resources
+        - message: Ensure Cost Center tags are enabled
           check:
             ~.resource:
               ~.(values(@)[].defined_tags):
