@@ -2,6 +2,7 @@ apiVersion: json.kyverno.io/v1alpha1
 kind: ValidatingPolicy
 metadata:
   name: check-cost-center-tagging
+  namespace: default
   annotations:
     policies.kyverno.io/title: Ensure Cost Center tags are enabled
     policies.kyverno.io/category: OCI Best Practices
