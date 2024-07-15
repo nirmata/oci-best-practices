@@ -9,6 +9,7 @@ metadata:
     policies.kyverno.io/description: >-
       Ensure resources are tagged appropriately for specific purposes, which include cost management, aggregation, reporting, and bulk action.
       Reference: https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm
+    policies.nirmata.io/remediation-docs: "https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/terraformbestpractices_topic-Tagging_Resources.htm"
       
 spec:
   rules:
