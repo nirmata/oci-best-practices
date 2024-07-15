@@ -20,7 +20,7 @@ spec:
         - (resource.oci_identity_compartment != null): true
       assert:
         all:
-        - message: Ensure Cost Center tags are enabled.
+        - message: Ensure Cost Center tags are enabled
           check:
             ~.resource:
               ~.(values(@)[].defined_tags):
