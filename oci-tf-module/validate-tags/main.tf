@@ -6,7 +6,7 @@ resource "oci_identity_compartment" "test_compartment" {
 
     #Optional
     defined_tags = {"Operations.CostCenter"= "42"}  //Policy to check the right tags
-    freeform_tags = {"Department-cs"= "Finance"}  //Policy to check the right tags}
+    freeform_tags = {"Department"= "Finance"}  //Policy to check the right tags}
 }
 
 resource "oci_identity_compartment" "test_compartment2" {
@@ -17,5 +17,5 @@ resource "oci_identity_compartment" "test_compartment2" {
 
     #Optional
     defined_tags = {"Operations.CostCenter"= "42"}  //Policy to check the right tags
-    freeform_tags = {"Department-cs"= "Something Else"}  //Policy to check the right tags}
+    freeform_tags = {"Department"= "Something Else"}  //Policy to check the right tags}
 }
